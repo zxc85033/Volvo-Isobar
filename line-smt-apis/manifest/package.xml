@@ -1,8 +1,122 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>custom_sobject_fields</fullName>
     <types>
-        <members>*</members>
+        <members>ActivityCarTest__c.ActivityCarTestDate__c</members>
+        <members>ActivityCarTest__c.ActivityID__c</members>
+        <members>ActivityCarTest__c.CarStyle__c</members>
+        <members>ActivityCarTest__c.CarTestRoute__c</members>
+        <members>ActivityCarTest__c.ChooseMethod__c</members>
+        <members>ActivityCarTest__c.Companion__c</members>
+        <members>ActivityCarTest__c.Dealer__c</members>
+        <members>ActivityCarTest__c.ExSalesRepresentative__c</members>
+        <members>ActivityCarTest__c.GarageTestRequirement__c</members>
+        <members>ActivityCarTest__c.LastTestCarStyle__c</members>
+        <members>ActivityCarTest__c.Lead__c</members>
+        <members>ActivityCarTest__c.LineActivityCarTestID__c</members>
+        <members>ActivityCarTest__c.Member__c</members>
+        <members>ActivityCarTest__c.PowerType__c</members>
+        <members>ActivityCarTest__c.PurchaseDecision__c</members>
+        <members>ActivityCarTest__c.SafetySeatQuantity__c</members>
+        <members>ActivityCarTest__c.SafetySeatRequirement__c</members>
+        <members>ActivityCarTest__c.SalesRepresentative__c</members>
+        <members>ActivityCarTest__c.Satisfaction__c</members>
+        <members>ActivityCarTest__c.Status__c</members>
+        <members>ActivityCarView__c.ActivityCarViewDate__c</members>
+        <members>ActivityCarView__c.ActivityID__c</members>
+        <members>ActivityCarView__c.CarStyle__c</members>
+        <members>ActivityCarView__c.ChooseMethod__c</members>
+        <members>ActivityCarView__c.Dealer__c</members>
+        <members>ActivityCarView__c.ExSalesRepresentative__c</members>
+        <members>ActivityCarView__c.Lead__c</members>
+        <members>ActivityCarView__c.LineActivityCarViewID__c</members>
+        <members>ActivityCarView__c.Member__c</members>
+        <members>ActivityCarView__c.PowerType__c</members>
+        <members>ActivityCarView__c.SalesRepresentative__c</members>
+        <members>ActivityCarView__c.Satisfaction__c</members>
+        <members>ActivityCarView__c.Status__c</members>
+        <members>CarTestRoute__c.CarTestRouteType__c</members>
+        <members>CarTestRoute__c.Dealer__c</members>
+        <members>CarTestRoute__c.DrivingDistance__c</members>
+        <members>CarTestRoute__c.DrivingTime__c</members>
+        <members>CarTestRoute__c.GoogleMapLink__c</members>
+        <members>CarTestRoute__c.RouteDescription__c</members>
+        <members>CarTestRoute__c.TestDriveExperienceProject__c</members>
+        <members>Dealer__c.Address__c</members>
+        <members>Dealer__c.Area__c</members>
+        <members>Dealer__c.City__c</members>
+        <members>Dealer__c.DealerCode__c</members>
+        <members>Dealer__c.DealerSystemCode__c</members>
+        <members>Dealer__c.DealerSystemName__c</members>
+        <members>Dealer__c.GPSlLngLat__c</members>
+        <members>Dealer__c.PhotoURL__c</members>
+        <members>Dealer__c.ServiceHours__c</members>
+        <members>Dealer__c.Telephone__c</members>
+        <members>Lead__c.LeadLevel__c</members>
+        <members>Lead__c.Member__c</members>
+        <members>Lead__c.SMTLeadId__c</members>
+        <members>Lead__c.SalesRepresentative__c</members>
+        <members>Member__c.Birthday__c</members>
+        <members>Member__c.CellPhone__c</members>
+        <members>Member__c.Email__c</members>
+        <members>Member__c.Gender__c</members>
+        <members>Member__c.LinePushAgreement__c</members>
+        <members>Member__c.LineUID__c</members>
+        <members>Member__c.MemberAgreement__c</members>
+        <members>Promotion__c.CarModel__c</members>
+        <members>Promotion__c.CarStyle__c</members>
+        <members>Promotion__c.PowerType__c</members>
+        <members>Promotion__c.PromotionContent__c</members>
+        <members>Promotion__c.PromotionMonth__c</members>
+        <members>Promotion__c.PromotionYear__c</members>
+        <members>Promotion__c.Status__c</members>
+        <members>Promotion__c.SuggestedPrice__c</members>
+        <members>Promotion__c.YearType__c</members>
+        <members>SalesRepresentative__c.CellPhone__c</members>
+        <members>SalesRepresentative__c.Dealer__c</members>
+        <members>SalesRepresentative__c.LineID__c</members>
+        <members>SalesRepresentative__c.LineLink__c</members>
+        <members>SalesRepresentative__c.NickName__c</members>
+        <members>SalesRepresentative__c.PhotoURL__c</members>
+        <members>SalesRepresentative__c.QRCodeLink__c</members>
+        <members>SalesRepresentative__c.SalesRepresentativeCode__c</members>
+        <members>SalesRepresentative__c.SelfRecommendedContent__c</members>
+        <members>SalesRepresentative__c.Telephone__c</members>
+        <members>SalesRepresentative__c.WorkingStatus__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>ActivityCarTest__c</members>
+        <members>ActivityCarView__c</members>
+        <members>CarTestRoute__c</members>
+        <members>Dealer__c</members>
+        <members>Lead__c</members>
+        <members>Member__c</members>
+        <members>Promotion__c</members>
+        <members>SalesRepresentative__c</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>ActivityCarTest__c-預約試駕 Layout</members>
+        <members>ActivityCarView__c-預約賞車 Layout</members>
+        <members>CarTestRoute__c-試駕路線 Layout</members>
+        <members>Dealer__c-經銷商 Layout</members>
+        <members>Lead__c-潛客 Layout</members>
+        <members>Member__c-會員基本資料 Layout</members>
+        <members>Promotion__c-當月優惠 Layout</members>
+        <members>SalesRepresentative__c-業代 Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>ActivityCarTest__c.All</members>
+        <members>ActivityCarView__c.All</members>
+        <members>CarTestRoute__c.All</members>
+        <members>Dealer__c.All</members>
+        <members>Lead__c.All</members>
+        <members>Member__c.All</members>
+        <members>Promotion__c.All</members>
+        <members>SalesRepresentative__c.All</members>
+        <name>ListView</name>
     </types>
     <version>49.0</version>
 </Package>
