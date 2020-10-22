@@ -3,22 +3,16 @@ public with sharing class CarTestRouteTriggerHandler extends TriggerHandler {
     }
 
     protected override void afterUpdate() {
-        sendToLine();
+        for (CarTestRoute__c carTestRoute : (List<CarTestRoute__c>) Trigger.new) {
+            String carTestRouteAsJson = JSON.serialize(carTestRoute);
+            LineCallout.carTestRouterTriggerCallout(carTestRouteAsJson);
+        }
     }
 
     protected override void afterInsert() {
-        sendToLine();
-    }
-
-    private MessageResponse sendToLine() {
-
-        HttpResponse response = HttpUtil.sendHttpGet('https://postman-echo.com/get?foo1=bar1&foo2=bar2');
-        MessageResponse messageResponse = new MessageResponse();
-        messageResponse.httpCode = response.getStatusCode();
-        messageResponse.message = response.getBody();
-
-        System.debug(messageResponse.message);
-
-        return messageResponse;
+        for (CarTestRoute__c carTestRoute : (List<CarTestRoute__c>) Trigger.new) {
+            String carTestRouteAsJson = JSON.serialize(carTestRoute);
+            LineCallout.carTestRouterTriggerCallout(carTestRouteAsJson);
+        }
     }
 }
