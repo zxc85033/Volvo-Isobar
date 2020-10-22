@@ -9,9 +9,16 @@ public with sharing class Constants {
 
     public final static String PicklistDealerAreaNorth = '北';
     public final static String PicklistDealerAreaSouth = '南';
-    public final static String PicklistDealerAreaWest = '中';
+    public final static String PicklistDealerAreaMiddle = '中';
     public final static String PicklistDealerAreaEast = '東';
 
+    public final static String PicklistPromotionPowerTypeGas = 'Drive-e 汽油車款';
+    public final static String PicklistPromotionPowerTypeHybrid = '高效輕油電車款';
+    public final static String PicklistPromotionPowerTypeHybridPhev = '雙能電動車款';
+
+    public final static String PicklistPromotionStatusEnabled = '啟用';
+    public final static String PicklistPromotionStatusDisabled = '停用';
+    
     public final static String lineHost = 'linehost';
     public final static String lineCalloutTriggerPromotion = '/line/promotion';
     public final static String lineCalloutTriggerCarTestRoute = '/line/carTestRoute';
