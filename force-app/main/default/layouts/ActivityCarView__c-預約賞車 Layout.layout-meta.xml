@@ -55,7 +55,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SalesRepresentative__c</field>
+                <field>ChooseSalesRepresentative__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

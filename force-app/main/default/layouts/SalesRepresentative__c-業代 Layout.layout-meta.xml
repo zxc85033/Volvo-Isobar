@@ -117,7 +117,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>ActivityCarView__c.SalesRepresentative__c</relatedList>
+        <relatedList>ActivityCarView__c.ChooseSalesRepresentative__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -125,7 +125,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>ActivityCarTest__c.SalesRepresentative__c</relatedList>
+        <relatedList>ActivityCarTest__c.ChooseSalesRepresentative__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>

@@ -4,7 +4,7 @@
     <columns>NAME</columns>
     <columns>LineActivityCarTestID__c</columns>
     <columns>Member__c</columns>
-    <columns>SalesRepresentative__c</columns>
+    <columns>ChooseSalesRepresentative__c</columns>
     <columns>Status__c</columns>
     <columns>CarTestRoute__c</columns>
     <filterScope>Everything</filterScope>
