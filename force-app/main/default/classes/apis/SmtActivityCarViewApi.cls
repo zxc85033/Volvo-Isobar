@@ -1,5 +1,5 @@
 @RestResource(urlMapping = '/smt/activityCarView')
-global with sharing class ActivityCarViewApi {
+global with sharing class SmtActivityCarViewApi {
 
     @HttpPost
     global static void saveActivityCarViewAndSendLine() {
