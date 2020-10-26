@@ -1,14 +1,15 @@
 @RestResource(urlMapping = '/smt/salesrepresentative')
 global with sharing class SmtSalesRepresentativeApi {
+    
     @HttpPost
-    global static void createOrUpdateSalesRepresentative() {
+    global static void saveSalesRepresentativeAndSendLine() {
         RestRequest request = RestContext.request;
-        System.debug(request.requestBody);
         RestResponse response = Restcontext.response;
-        MessageResponse messageResponse = (MessageResponse) JSON.deserialize(request.requestBody.toString(), MessageResponse.class);
-        
-        response.statusCode = 200;
-        Blob resAsBlob = ApiResponseUtil.buildBlobFromString('Message is ' + messageResponse.message + ' and code is ' + messageResponse.httpCode);
-        response.responseBody = resAsBlob;
+
+        SalesRepresentativeWrapper salesReps = SalesRepresentativeWrapper.parseJson(request.requestBody.toString());
+        SalesRepresentative__c salesRepsObject = (SalesRepresentative__c) salesReps.ToSObject();
+        Database.UpsertResult dbResult = Database.upsert(salesRepsObject);
+
+        ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
    }
 }
