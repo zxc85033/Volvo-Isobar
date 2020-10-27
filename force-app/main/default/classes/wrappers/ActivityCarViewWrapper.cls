@@ -10,6 +10,10 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
 	public String activityCarViewDate {get; set;}
     public String satisfaction {get; set;}
     
+    public String lineUID {get; set;}
+    public String chooseMethod {get; set;}
+    public String chooseSalesRepresentativeCode {get; set;}
+    
     global override String getSObjectName() {
         return 'ActivityCarView__c';
     }
@@ -18,13 +22,15 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
         return new Map<String, Object> {
             'LineActivityCarViewID__c' => this.lineActivityCarViewID,
             'ActivityID__c' => this.activityID,
-            'SalesRepresentative__c' => this.salesRepresentativeCode,
+            'ChooseSalesRepresentative__c' => this.salesRepresentativeCode,
             'Dealer__c' => this.dealerCode,
             'CarStyle__c' => this.carStyle,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
             'ActivityCarViewDate__c' => this.activityCarViewDate,
-            'Satisfaction__c' => this.satisfaction
+            'Satisfaction__c' => this.satisfaction,
+            'ChooseMethod__c' => this.chooseMethod,
+            'ChooseSalesRepresentative__c' => this.chooseSalesRepresentativeCode
         };
     }
 
