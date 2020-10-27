@@ -16,6 +16,10 @@ global with sharing class ActivityCarTestWrapper extends DtoBase {
     public String purchaseDecision {get; set;}
     public String lastTestCarStyle {get; set;}
     public String satisfaction {get; set;}
+
+    public String lineUID {get; set;}
+    public String chooseMethod {get; set;}
+    public String chooseSalesRepresentativeCode {get ;set;}
     
     global override String getSObjectName() {
         return 'ActivityCarTest__c';
@@ -36,9 +40,11 @@ global with sharing class ActivityCarTestWrapper extends DtoBase {
             'SafetySeatQuantity__c' => this.safetySeatQuantity,
             'GarageTestRequirement__c' => this.garageTestRequirement,
             'CarTestRoute__c' => this.carTestRouteCode,
-            'PurchaseDecision__c	' => this.purchaseDecision,
+            'PurchaseDecision__c' => this.purchaseDecision,
             'LastTestCarStyle__c' => this.lastTestCarStyle,
-            'Satisfaction__c' => this.satisfaction
+            'Satisfaction__c' => this.satisfaction,
+            'ChooseMethod__c' => this.chooseMethod,
+            'ChooseSalesRepresentative__c' => this.chooseSalesRepresentativeCode
         };
     }
 
