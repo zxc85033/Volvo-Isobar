@@ -22,12 +22,11 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
         return new Map<String, Object> {
             'LineActivityCarViewID__c' => this.lineActivityCarViewID,
             'ActivityID__c' => this.activityID,
-            'ChooseSalesRepresentative__c' => this.salesRepresentativeCode,
             'Dealer__c' => this.dealerCode,
             'CarStyle__c' => this.carStyle,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
-            'ActivityCarViewDate__c' => this.activityCarViewDate,
+            'ActivityCarViewDate__c' => Datetime.valueOf(this.activityCarViewDate),
             'Satisfaction__c' => this.satisfaction,
             'ChooseMethod__c' => this.chooseMethod,
             'ChooseSalesRepresentative__c' => this.chooseSalesRepresentativeCode

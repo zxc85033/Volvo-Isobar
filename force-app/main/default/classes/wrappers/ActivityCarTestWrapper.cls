@@ -1,4 +1,4 @@
-global with sharing class ActivityCarTestWrapper extends DtoBase {
+global class ActivityCarTestWrapper extends DtoBase {
     public String lineActivityCarTestID {get; set;}
     public String activityID {get; set;}
     public String SMTLeadID {get; set;}
@@ -29,12 +29,11 @@ global with sharing class ActivityCarTestWrapper extends DtoBase {
         return new Map<String, Object> {
             'LineActivityCarTestID__c' => this.lineActivityCarTestID,
             'ActivityID__c' => this.activityID,
-            'SalesRepresentative__c' => this.salesRepresentativeCode,
             'Dealer__c' => this.dealerCode,
             'CarStyle__c' => this.carStyle,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
-            'ActivityCarTestDate__c' => this.activityCarTestDate,
+            'ActivityCarTestDate__c' => Datetime.valueOf(this.activityCarTestDate),
             'Companion__c' => this.companion,
             'SafetySeatRequirement__c' => this.safetySeatRequirement,
             'SafetySeatQuantity__c' => this.safetySeatQuantity,

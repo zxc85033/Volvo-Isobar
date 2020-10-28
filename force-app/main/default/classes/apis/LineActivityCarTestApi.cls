@@ -1,15 +1,21 @@
 @RestResource(urlMapping = '/line/activityCarTest')
-global with sharing class LineActivityCarTestApi {
+global class LineActivityCarTestApi {
+    
     @HttpPost
     global static void saveActivityCarTestAndSendToSmt() {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        MemberWrapper member = MemberWrapper.parseJson(request.requestBody.toString());
-
-        Member__c memberObject = (Member__c) member.ToSObject();
+        ActivityCarTestWrapper activityCarTest = ActivityCarTestWrapper.parseJson(request.requestBody.toString());
+        ActivityCarTest__c activityCarTestObject = [SELECT id FROM ActivityCarTest__c WHERE ActivityID__c =: activityCarTest.ActivityID];
         
-        Database.UpsertResult dbResult = Database.upsert(memberObject);
+        if (activityCarTestObject == null) {
+            activityCarTestObject = (ActivityCarTest__c) activityCarTest.ToSObject();
+        } else {
+            System.debug('activityCarTestObject existing');
+        }
+        
+        Database.UpsertResult dbResult = Database.upsert(activityCarTestObject);
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
 }
