@@ -6,11 +6,16 @@ global with sharing class SmtLeadLevelApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        LeadWrapper lead = LeadWrapper.parseJson(request.requestBody.toString());
+        LeadWrapper requestBodyWrapper = LeadWrapper.parseJson(request.requestBody.toString());
+        Lead__c requestBodyObject = (Lead__c) requestBodyWrapper.ToSObject();
 
-        Lead__c leadObject = (Lead__c) lead.ToSObject();
+        Lead__c existingObject = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
+        if (existingObject != null) {
+            requestBodyObject.Id = existingObject.Id;
+            requestBodyObject = (Lead__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
+        }
         
-        Database.UpsertResult dbResult = Database.upsert(leadObject);
+        Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
    }
     

@@ -6,10 +6,16 @@ global with sharing class SmtSalesRepresentativeApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        SalesRepresentativeWrapper salesReps = SalesRepresentativeWrapper.parseJson(request.requestBody.toString());
-        SalesRepresentative__c salesRepsObject = (SalesRepresentative__c) salesReps.ToSObject();
-        Database.UpsertResult dbResult = Database.upsert(salesRepsObject);
+        SalesRepresentativeWrapper requestBodyWrapper = SalesRepresentativeWrapper.parseJson(request.requestBody.toString());
+        SalesRepresentative__c requestBodyObject = (SalesRepresentative__c) requestBodyWrapper.ToSObject();
 
+        SalesRepresentative__c existingObject = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.salesRepresentativeCode];
+        if (existingObject != null) {
+            requestBodyObject.Id = existingObject.Id;
+            requestBodyObject = (SalesRepresentative__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
+        }
+
+        Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
    }
 }
