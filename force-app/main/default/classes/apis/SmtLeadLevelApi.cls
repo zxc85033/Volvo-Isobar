@@ -9,8 +9,9 @@ global with sharing class SmtLeadLevelApi {
         LeadWrapper requestBodyWrapper = LeadWrapper.parseJson(request.requestBody.toString());
         Lead__c requestBodyObject = (Lead__c) requestBodyWrapper.ToSObject();
 
-        Lead__c existingObject = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
-        if (existingObject != null) {
+        List<Lead__c> existingObjectList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
+        if (existingObjectList != null && existingObjectList.size() > 0) {
+            Lead__c existingObject = existingObjectList.get(0);
             requestBodyObject.Id = existingObject.Id;
             requestBodyObject = (Lead__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
         }

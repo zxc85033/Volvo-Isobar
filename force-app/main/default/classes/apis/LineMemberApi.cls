@@ -9,8 +9,9 @@ global with sharing class LineMemberApi {
         MemberWrapper requestBodyWrapper = MemberWrapper.parseJson(request.requestBody.toString());
         Member__c requestBodyObject = (Member__c) requestBodyWrapper.ToSObject();
         
-        Member__c existingObject = [SELECT Id FROM Member__c WHERE LineUID__c =: requestBodyWrapper.lineUID];
-        if (existingObject != null) {
+        List<Member__c> existingObjectList = [SELECT Id FROM Member__c WHERE LineUID__c =: requestBodyWrapper.lineUID];
+        if (existingObjectList != null && existingObjectList.size() > 0) {
+            Member__c existingObject = existingObjectList.get(0);
             requestBodyObject.Id = existingObject.Id;
             requestBodyObject = (Member__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
         }
