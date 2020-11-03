@@ -1,5 +1,5 @@
 @RestResource(urlMapping = '/smt/activityCarView')
-global with sharing class SmtActivityCarViewApi {
+global class SmtActivityCarViewApi {
 
     @HttpPost
     global static void saveActivityCarViewAndSendLine() {
@@ -8,6 +8,11 @@ global with sharing class SmtActivityCarViewApi {
 
         ActivityCarViewWrapper requestBodyWrapper = ActivityCarViewWrapper.parseJson(request.requestBody.toString());
         ActivityCarView__c requestBodyObject = (ActivityCarView__c) requestBodyWrapper.ToSObject();
+
+        List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];
+        if (existingDealerList != null && existingDealerList.size() > 0) {
+            requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
+        }
 
         List<ActivityCarView__c> existingObjectList = [SELECT id FROM ActivityCarView__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
         if (existingObjectList != null && existingObjectList.size() > 0) {

@@ -5,7 +5,7 @@ global abstract class DtoBase {
 	
 	global virtual SObject ToSObject() {
 		SObject obj = Schema.getGlobalDescribe().get(getSObjectName()).newSObject();
-		Map<String, Object> objectMap = getSObjectMap();			
+		Map<String, Object> objectMap = getSObjectMap();
 
 		for (String sObjectField : objectMap.keySet()) {
 			obj.put(sObjectField, objectMap.get(sObjectField));

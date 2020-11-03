@@ -11,8 +11,6 @@ global with sharing class LeadWrapper extends DtoBase {
     global override Map<String, Object> getSObjectMap() {
         return new Map<String, Object> {
             'SMTLeadId__c' => this.SMTLeadID,
-            'SalesRepresentative__c	' => this.salesRepresentativeCode,
-            'ExSalesRepresentative__c' => this.exSalesRepresentativeCode,
             'LeadLevel__c' => this.leadLevel
         };
     }

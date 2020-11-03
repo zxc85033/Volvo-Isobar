@@ -1,5 +1,5 @@
 @RestResource(urlMapping = '/smt/activityCarTest')
-global with sharing class SmtActivityCarTestApi {
+global class SmtActivityCarTestApi {
 
     @HttpPost
     global static void saveActivityCarTestAndSendLine() {
@@ -8,6 +8,16 @@ global with sharing class SmtActivityCarTestApi {
 
         ActivityCarTestWrapper requestBodyWrapper = ActivityCarTestWrapper.parseJson(request.requestBody.toString());
         ActivityCarTest__c requestBodyObject = (ActivityCarTest__c) requestBodyWrapper.ToSObject();
+
+        List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];
+        if (existingDealerList != null && existingDealerList.size() > 0) {
+            requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
+        }
+
+        List<CarTestRoute__c> existingCarTestRouterList = [SELECT Id FROM CarTestRoute__c WHERE Name =: requestBodyWrapper.dealerCode];
+        if (existingCarTestRouterList != null && existingCarTestRouterList.size() > 0) {
+            requestBodyObject.CarTestRoute__c = existingCarTestRouterList.get(0).Id;
+        }
 
         List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
         if (existingObjectList != null && existingObjectList.size() > 0) {

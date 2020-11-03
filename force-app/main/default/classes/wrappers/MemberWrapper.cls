@@ -17,7 +17,7 @@ global with sharing class MemberWrapper extends DtoBase {
             'Gender__c' => this.gender,
             'CellPhone__c' => this.cellPhone,
             'Email__c' => this.email,
-            'Birthday__c' => this.birthday
+            'Birthday__c' => Date.valueOf(this.birthday)
         };
     }
 

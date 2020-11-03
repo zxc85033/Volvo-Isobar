@@ -1,5 +1,5 @@
 @RestResource(urlMapping = '/smt/salesrepresentative')
-global with sharing class SmtSalesRepresentativeApi {
+global class SmtSalesRepresentativeApi {
     
     @HttpPost
     global static void saveSalesRepresentativeAndSendLine() {
@@ -8,6 +8,11 @@ global with sharing class SmtSalesRepresentativeApi {
 
         SalesRepresentativeWrapper requestBodyWrapper = SalesRepresentativeWrapper.parseJson(request.requestBody.toString());
         SalesRepresentative__c requestBodyObject = (SalesRepresentative__c) requestBodyWrapper.ToSObject();
+
+        List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];
+        if (existingDealerList != null && existingDealerList.size() > 0) {
+            requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
+        }
 
         List<SalesRepresentative__c> existingObjectList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.salesRepresentativeCode];
         if (existingObjectList != null && existingObjectList.size() > 0) {

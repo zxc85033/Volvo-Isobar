@@ -1,5 +1,5 @@
 @RestResource(urlMapping = '/line/member')
-global with sharing class LineMemberApi {
+global class LineMemberApi {
     
     @HttpPost
     global static void saveMemberAndSendToSmt() {

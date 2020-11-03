@@ -29,21 +29,18 @@ global class ActivityCarTestWrapper extends DtoBase {
         return new Map<String, Object> {
             'LineActivityCarTestID__c' => this.lineActivityCarTestID,
             'ActivityID__c' => this.activityID,
-            'Dealer__c' => this.dealerCode,
             'CarStyle__c' => this.carStyle,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
-            'ActivityCarTestDate__c' => Datetime.valueOf(this.activityCarTestDate),
+            'ActivityCarTestDate__c' => this.activityCarTestDate != null? Datetime.valueOf(this.activityCarTestDate) : null,
             'Companion__c' => this.companion,
             'SafetySeatRequirement__c' => this.safetySeatRequirement,
             'SafetySeatQuantity__c' => this.safetySeatQuantity,
             'GarageTestRequirement__c' => this.garageTestRequirement,
-            'CarTestRoute__c' => this.carTestRouteCode,
             'PurchaseDecision__c' => this.purchaseDecision,
             'LastTestCarStyle__c' => this.lastTestCarStyle,
             'Satisfaction__c' => this.satisfaction,
-            'ChooseMethod__c' => this.chooseMethod,
-            'ChooseSalesRepresentative__c' => this.chooseSalesRepresentativeCode
+            'ChooseMethod__c' => this.chooseMethod
         };
     }
 
