@@ -26,7 +26,11 @@ global class SmtLeadLevelApi {
         }
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.success) {
+            LineCallout.externalLineApiPromotion();
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
+        
    }
     
 }

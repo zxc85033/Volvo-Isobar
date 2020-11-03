@@ -24,5 +24,7 @@ public with sharing class Constants {
     public final static String lineCalloutTriggerCarTestRoute = '/line/carTestRoute';
     public final static String lineCalloutTriggerDealer = '/line/dealer';
 
+    public final static String lineCalloutHost = 'https://cloudservice.azure-api.net/volvo/api/test/';
+
     public final static String smtHost = 'smthost';
 }
