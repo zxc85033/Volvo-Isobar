@@ -14,6 +14,11 @@ global class SmtActivityCarViewApi {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
         }
 
+        List<Lead__c> existingLeadList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
+        if (existingLeadList != null && existingLeadList.size() > 0) {
+            requestBodyObject.Lead__c = existingLeadList.get(0).Id;
+        }
+
         List<ActivityCarView__c> existingObjectList = [SELECT id FROM ActivityCarView__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
         if (existingObjectList != null && existingObjectList.size() > 0) {
             ActivityCarView__c existingObject = existingObjectList.get(0);

@@ -19,6 +19,11 @@ global class SmtActivityCarTestApi {
             requestBodyObject.CarTestRoute__c = existingCarTestRouterList.get(0).Id;
         }
 
+        List<Lead__c> existingLeadList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
+        if (existingLeadList != null && existingLeadList.size() > 0) {
+            requestBodyObject.Lead__c = existingLeadList.get(0).Id;
+        }
+
         List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
         if (existingObjectList != null && existingObjectList.size() > 0) {
             ActivityCarTest__c existingObject = existingObjectList.get(0);
