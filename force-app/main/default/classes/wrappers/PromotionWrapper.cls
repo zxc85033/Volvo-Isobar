@@ -1,4 +1,4 @@
-global with sharing class PromotionWrapper extends DtoBase {
+global with sharing class PromotionWrapper {
     public String PromotionID {get; set;}
     public String PromotionYear {get; set;}
     public String PromotionMonth {get; set;}
@@ -16,12 +16,12 @@ global with sharing class PromotionWrapper extends DtoBase {
         this.PromotionYear = promotionObject.PromotionYear__c;
         this.PromotionMonth = promotionObject.PromotionMonth__c;
         
-        this.CarSeries = null;
+        this.CarSeries = promotionObject.CarSeries__c;
         this.CarModel = promotionObject.CarModel__c;
         this.CarStyle = promotionObject.CarStyle__c;
 
         this.YearType = promotionObject.YearType__c;
-        this.SuggestedPrice = promotionObject.SuggestedPrice__c;
+        this.SuggestedPrice = String.valueOf(promotionObject.SuggestedPrice__c);
         this.PromotionContent = promotionObject.PromotionContent__c;
         
         this.Status = promotionObject.Status__c;
