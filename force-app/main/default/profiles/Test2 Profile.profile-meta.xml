@@ -110,7 +110,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>SObjectUtil</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>SalesRepresentativeWrapper</apexClass>
