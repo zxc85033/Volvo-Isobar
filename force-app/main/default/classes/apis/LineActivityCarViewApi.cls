@@ -46,11 +46,15 @@ global class LineActivityCarViewApi {
         ActivityCarView__c requestBodyObject = (ActivityCarView__c) requestBodyWrapper.ToSObject();
 
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
-        if (existingObjectList != null && existingObjectList.size() > 0) {
-            ActivityCarView__c existingObject = existingObjectList.get(0);
-            requestBodyObject.Id = existingObject.Id;
-            requestBodyObject = (ActivityCarView__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);
+        if (existingObjectList == null || existingObjectList.isEmpty()) {
+            response.statusCode = 400;
+            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.ResponseErrorNotExisting);
+            return;
         }
+        
+        ActivityCarView__c existingObject = existingObjectList.get(0);
+        requestBodyObject.Id = existingObject.Id;
+        requestBodyObject = (ActivityCarView__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);        
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);

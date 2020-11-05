@@ -3,7 +3,7 @@
     <fullName>Dealer__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>經銷商名稱</label>
+    <label>經銷商</label>
     <referenceTo>Dealer__c</referenceTo>
     <relationshipLabel>預約試駕</relationshipLabel>
     <relationshipName>ActivityCarTestToDealer</relationshipName>

@@ -44,13 +44,22 @@ global class LineActivityCarTestApi {
 
         LineActivityCarTestUpdateWrapper requestBodyWrapper = LineActivityCarTestUpdateWrapper.parseJson(request.requestBody.toString());
         ActivityCarTest__c requestBodyObject = (ActivityCarTest__c) requestBodyWrapper.ToSObject();
+
+        List<CarTestRoute__c> existingCarTestRouterList = [SELECT Id FROM CarTestRoute__c WHERE Name =: requestBodyWrapper.carTestRouteID];
+        if (existingCarTestRouterList != null && existingCarTestRouterList.size() > 0) {
+            requestBodyObject.CarTestRoute__c = existingCarTestRouterList.get(0).Id;
+        }
         
         List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE LineActivityCarTestID__c =: requestBodyWrapper.lineActivityCarTestID];
-        if (existingObjectList != null && existingObjectList.size() > 0) {
-            ActivityCarTest__c existingObject = existingObjectList.get(0);
-            requestBodyObject.Id = existingObject.Id;
-            requestBodyObject = (ActivityCarTest__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);
+        if (existingObjectList == null || existingObjectList.isEmpty()) {
+            response.statusCode = 400;
+            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.ResponseErrorNotExisting);
+            return;
         }
+
+        ActivityCarTest__c existingObject = existingObjectList.get(0);
+        requestBodyObject.Id = existingObject.Id;
+        requestBodyObject = (ActivityCarTest__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);

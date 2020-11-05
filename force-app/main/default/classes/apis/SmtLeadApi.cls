@@ -1,5 +1,5 @@
-@RestResource(urlMapping = '/smt/leadlevel')
-global class SmtLeadLevelApi {
+@RestResource(urlMapping = '/smt/lead')
+global class SmtLeadApi {
 
     @HttpPost
     global static void saveLeadAndSendLine() {
@@ -19,18 +19,20 @@ global class SmtLeadLevelApi {
         }
 
         List<Lead__c> existingObjectList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
-        if (existingObjectList != null && existingObjectList.size() > 0) {
-            Lead__c existingObject = existingObjectList.get(0);
-            requestBodyObject.Id = existingObject.Id;
-            requestBodyObject = (Lead__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
+        if (existingObjectList == null || existingObjectList.isEmpty()) {
+            MessageResponseWrapper messageResponseWrapper = new MessageResponseWrapper();
+            messageResponseWrapper.httpCode = 400;
+            messageResponseWrapper.message = Constants.ResponseErrorNotExisting;
+            response.statusCode = 400;
+            response.responseBody = ApiResponseUtil.buildBlobFromString(JSON.serialize(messageResponseWrapper));
+            return;
         }
+        Lead__c existingObject = existingObjectList.get(0);
+        requestBodyObject.Id = existingObject.Id;
+        requestBodyObject = (Lead__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
-        if (dbResult.success) {
-            LineCallout.externalLineApiPromotion();
-        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
-        
    }
     
 }

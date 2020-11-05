@@ -2,7 +2,6 @@ global with sharing class SalesRepresentativeWrapper extends DtoBase {
     public String salesRepresentativeCode {get; set;}
     public String salesRepresentativeName {get; set;}
     public String dealerCode {get; set;}
-    public String photoURL {get; set;}
     public String nickname {get; set;}
     public String cellPhone {get; set;}
     public String telephone {get; set;}
@@ -20,7 +19,6 @@ global with sharing class SalesRepresentativeWrapper extends DtoBase {
 		return new Map<String, Object> {
 			'SalesRepresentativeCode__c' => this.salesRepresentativeCode,
 			'Name' => this.salesRepresentativeName,
-			'PhotoURL__c' => this.photoURL,
 			'NickName__c' => this.nickname,
 			'CellPhone__c' => this.cellPhone,
 			'Telephone__c' => this.telephone,

@@ -29,4 +29,8 @@ public with sharing class Constants {
     public final static String SmtHost = 'smthost';
 
     public final static String ResponseErrorDuplicateLineActivityID = 'Duplicate Line Activity ID';
+    public final static String ResponseErrorNotExisting = 'This object does not exist.';
+
+    public final static String ResponseErrorCannotInsertOrUpdate = 'Error while inserting or updating the sales representative.';
+    public final static String ResponseSuccessInsertOrUpdate = 'The object has been insert or updated with success.';
 }

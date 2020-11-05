@@ -3,16 +3,10 @@ global with sharing class SmtActivityCarViewWrapper extends DtoBase {
 	public String activityID {get; set;}
 	public String SMTLeadID {get; set;}
 	public String salesRepresentativeCode {get; set;}
-	public String dealerCode {get; set;}
 	public String carModel {get; set;}
 	public String powerType {get; set;}
 	public String status {get; set;}
 	public String activityCarViewDate {get; set;}
-    public String satisfaction {get; set;}
-    
-    public String lineUID {get; set;}
-    public String chooseMethod {get; set;}
-    public String chooseSalesRepresentativeCode {get; set;}
     
     global override String getSObjectName() {
         return 'ActivityCarView__c';
@@ -25,9 +19,7 @@ global with sharing class SmtActivityCarViewWrapper extends DtoBase {
             'CarModel__c' => this.carModel,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
-            'ActivityCarViewDate__c' => this.activityCarViewDate!= null? Datetime.valueOf(this.activityCarViewDate): null,
-            'Satisfaction__c' => this.satisfaction,
-            'ChooseMethod__c' => this.chooseMethod
+            'ActivityCarViewDate__c' => this.activityCarViewDate!= null? Datetime.valueOf(this.activityCarViewDate): null
         };
     }
 

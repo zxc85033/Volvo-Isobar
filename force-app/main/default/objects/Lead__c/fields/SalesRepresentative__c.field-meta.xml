@@ -3,7 +3,7 @@
     <fullName>SalesRepresentative__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>業代</label>
+    <label>銷售業代</label>
     <referenceTo>SalesRepresentative__c</referenceTo>
     <relationshipLabel>潛客</relationshipLabel>
     <relationshipName>LeadToSalesRep</relationshipName>

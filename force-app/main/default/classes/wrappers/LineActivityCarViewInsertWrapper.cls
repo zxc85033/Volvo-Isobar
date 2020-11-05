@@ -5,7 +5,6 @@ global with sharing class LineActivityCarViewInsertWrapper extends DtoBase {
 	public String powerType {get; set;}
 	public String status {get; set;}
 	public String activityCarViewDate {get; set;}
-    public String satisfaction {get; set;}
     public String lineUID {get; set;}
     public String chooseMethod {get; set;}
     public String chooseSalesRepresentativeCode {get; set;}
@@ -21,7 +20,6 @@ global with sharing class LineActivityCarViewInsertWrapper extends DtoBase {
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
             'ActivityCarViewDate__c' => this.activityCarViewDate!= null? Datetime.valueOf(this.activityCarViewDate): null,
-            'Satisfaction__c' => this.satisfaction,
             'ChooseMethod__c' => this.chooseMethod
         };
     }

@@ -3,7 +3,7 @@
     <fullName>Member__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>會員姓名</label>
+    <label>會員</label>
     <referenceTo>Member__c</referenceTo>
     <relationshipLabel>預約試駕</relationshipLabel>
     <relationshipName>ActivityCarTestToMember</relationshipName>
