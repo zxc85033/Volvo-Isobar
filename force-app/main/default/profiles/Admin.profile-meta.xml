@@ -161,7 +161,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>ActivityCarTest__c.CarStyle__c</field>
+        <field>ActivityCarTest__c.CarModel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -261,7 +261,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>ActivityCarView__c.CarStyle__c</field>
+        <field>ActivityCarView__c.CarModel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

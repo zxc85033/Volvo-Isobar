@@ -5,7 +5,7 @@ global class LineActivityCarViewApi {
     global static void saveActivityCarViewAndSendToSmt() {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
-
+        
         ActivityCarViewWrapper requestBodyWrapper = ActivityCarViewWrapper.parseJson(request.requestBody.toString());
         ActivityCarView__c requestBodyObject = (ActivityCarView__c) requestBodyWrapper.ToSObject();
 
@@ -13,10 +13,17 @@ global class LineActivityCarViewApi {
         if (existingDealerList != null && existingDealerList.size() > 0) {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
         }
+        
+        List<Member__c> existingMemberList = [SELECT Id FROM Member__c WHERE LineUID__c =: requestBodyWrapper.lineUID];
+        if (existingMemberList != null && existingMemberList.size() > 0) {
+            requestBodyObject.Member__c = existingMemberList.get(0).Id;
+        }
 
-        List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
-        if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
-            requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+        if (requestBodyWrapper.chooseMethod == Constants.PicklistChooseSalesRepsManual) {
+            List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
+            if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
+                requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+            }
         }
         
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
@@ -35,7 +42,7 @@ global class LineActivityCarViewApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        ActivityCarViewWrapper requestBodyWrapper = ActivityCarViewWrapper.parseJson(request.requestBody.toString());
+        LineActivityCarViewUpdateWrapper requestBodyWrapper = LineActivityCarViewUpdateWrapper.parseJson(request.requestBody.toString());
         ActivityCarView__c requestBodyObject = (ActivityCarView__c) requestBodyWrapper.ToSObject();
 
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];

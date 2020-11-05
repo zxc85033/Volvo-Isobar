@@ -14,12 +14,19 @@ global class LineActivityCarTestApi {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
         }
 
-        List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
-        if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
-            requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+        List<Member__c> existingMemberList = [SELECT Id FROM Member__c WHERE LineUID__c =: requestBodyWrapper.lineUID];
+        if (existingMemberList != null && existingMemberList.size() > 0) {
+            requestBodyObject.Member__c = existingMemberList.get(0).Id;
         }
 
-        List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
+        if (requestBodyWrapper.chooseMethod == Constants.PicklistChooseSalesRepsManual) {
+            List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
+            if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
+                requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+            }
+        }
+
+        List<ActivityCarTest__c> existingObjectList = [SELECT Id FROM ActivityCarTest__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
         if (existingObjectList != null && existingObjectList.size() > 0) {
             ActivityCarTest__c existingObject = existingObjectList.get(0);
             requestBodyObject.Id = existingObject.Id;

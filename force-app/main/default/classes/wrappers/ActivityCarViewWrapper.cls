@@ -4,7 +4,7 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
 	public String SMTLeadID {get; set;}
 	public String salesRepresentativeCode {get; set;}
 	public String dealerCode {get; set;}
-	public String carStyle {get; set;}
+	public String carModel {get; set;}
 	public String powerType {get; set;}
 	public String status {get; set;}
 	public String activityCarViewDate {get; set;}
@@ -22,7 +22,7 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
         return new Map<String, Object> {
             'LineActivityCarViewID__c' => this.lineActivityCarViewID,
             'ActivityID__c' => this.activityID,
-            'CarStyle__c' => this.carStyle,
+            'CarModel__c' => this.carModel,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
             'ActivityCarViewDate__c' => this.activityCarViewDate!= null? Datetime.valueOf(this.activityCarViewDate): null,

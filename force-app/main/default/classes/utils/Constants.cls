@@ -18,7 +18,9 @@ public with sharing class Constants {
 
     public final static String PicklistPromotionStatusEnabled = '啟用';
     public final static String PicklistPromotionStatusDisabled = '停用';
-    
+   
+    public final static String PicklistChooseSalesRepsManual = '自行指定';
+
     public final static String LineHost = 'https://cloudservice.azure-api.net/volvo/api/test/';
     public final static String LineEndpointPromotion = 'promotion';
     public final static String LineEndpointCarTestRoute = 'carTestRoute';
