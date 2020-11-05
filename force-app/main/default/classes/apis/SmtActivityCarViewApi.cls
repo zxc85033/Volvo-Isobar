@@ -6,7 +6,7 @@ global class SmtActivityCarViewApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        ActivityCarViewWrapper requestBodyWrapper = ActivityCarViewWrapper.parseJson(request.requestBody.toString());
+        SmtActivityCarViewWrapper requestBodyWrapper = SmtActivityCarViewWrapper.parseJson(request.requestBody.toString());
         ActivityCarView__c requestBodyObject = (ActivityCarView__c) requestBodyWrapper.ToSObject();
 
         List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];

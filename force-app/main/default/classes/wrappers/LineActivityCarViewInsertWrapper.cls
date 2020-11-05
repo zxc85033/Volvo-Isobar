@@ -1,15 +1,11 @@
-global with sharing class ActivityCarViewWrapper extends DtoBase {
+global with sharing class LineActivityCarViewInsertWrapper extends DtoBase {
     public String lineActivityCarViewID {get; set;}
-	public String activityID {get; set;}
-	public String SMTLeadID {get; set;}
-	public String salesRepresentativeCode {get; set;}
 	public String dealerCode {get; set;}
 	public String carModel {get; set;}
 	public String powerType {get; set;}
 	public String status {get; set;}
 	public String activityCarViewDate {get; set;}
     public String satisfaction {get; set;}
-    
     public String lineUID {get; set;}
     public String chooseMethod {get; set;}
     public String chooseSalesRepresentativeCode {get; set;}
@@ -21,7 +17,6 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
     global override Map<String, Object> getSObjectMap() {
         return new Map<String, Object> {
             'LineActivityCarViewID__c' => this.lineActivityCarViewID,
-            'ActivityID__c' => this.activityID,
             'CarModel__c' => this.carModel,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
@@ -31,7 +26,7 @@ global with sharing class ActivityCarViewWrapper extends DtoBase {
         };
     }
 
-    global static ActivityCarViewWrapper parseJson(String jsonString) {
-        return (ActivityCarViewWrapper) System.JSON.deserialize(jsonString, ActivityCarViewWrapper.class);
+    global static LineActivityCarViewInsertWrapper parseJson(String jsonString) {
+        return (LineActivityCarViewInsertWrapper) System.JSON.deserialize(jsonString, LineActivityCarViewInsertWrapper.class);
     }
 }

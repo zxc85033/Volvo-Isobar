@@ -6,8 +6,15 @@ global class LineActivityCarTestApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        ActivityCarTestWrapper requestBodyWrapper = ActivityCarTestWrapper.parseJson(request.requestBody.toString());
+        LineActivityCarTestInsertWrapper requestBodyWrapper = LineActivityCarTestInsertWrapper.parseJson(request.requestBody.toString());
         ActivityCarTest__c requestBodyObject = (ActivityCarTest__c) requestBodyWrapper.ToSObject();
+
+        List<ActivityCarTest__c> existingObjectList = [SELECT Id FROM ActivityCarTest__c WHERE LineActivityCarTestID__c =: requestBodyWrapper.lineActivityCarTestID];
+        if (existingObjectList != null && existingObjectList.size() > 0) {
+            response.statusCode = 400;
+            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.ResponseErrorDuplicateLineActivityID);
+            return;
+        }
 
         List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];
         if (existingDealerList != null && existingDealerList.size() > 0) {
@@ -25,13 +32,6 @@ global class LineActivityCarTestApi {
                 requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
             }
         }
-
-        List<ActivityCarTest__c> existingObjectList = [SELECT Id FROM ActivityCarTest__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
-        if (existingObjectList != null && existingObjectList.size() > 0) {
-            ActivityCarTest__c existingObject = existingObjectList.get(0);
-            requestBodyObject.Id = existingObject.Id;
-            requestBodyObject = (ActivityCarTest__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);
-        }
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
@@ -42,10 +42,10 @@ global class LineActivityCarTestApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        ActivityCarTestWrapper requestBodyWrapper = ActivityCarTestWrapper.parseJson(request.requestBody.toString());
+        LineActivityCarTestUpdateWrapper requestBodyWrapper = LineActivityCarTestUpdateWrapper.parseJson(request.requestBody.toString());
         ActivityCarTest__c requestBodyObject = (ActivityCarTest__c) requestBodyWrapper.ToSObject();
         
-        List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE ActivityID__c =: requestBodyWrapper.ActivityID];
+        List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE LineActivityCarTestID__c =: requestBodyWrapper.lineActivityCarTestID];
         if (existingObjectList != null && existingObjectList.size() > 0) {
             ActivityCarTest__c existingObject = existingObjectList.get(0);
             requestBodyObject.Id = existingObject.Id;

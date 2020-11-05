@@ -27,4 +27,6 @@ public with sharing class Constants {
     public final static String LineEndpointDealer = 'dealer';
 
     public final static String SmtHost = 'smthost';
+
+    public final static String ResponseErrorDuplicateLineActivityID = 'Duplicate Line Activity ID';
 }
