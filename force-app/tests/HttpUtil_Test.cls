@@ -14,7 +14,7 @@ public with sharing class HttpUtil_Test {
     static void test_send_http_post_expect_200_contains_ok() {
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, new HttpUtilMock());
-        HttpResponse response = HttpUtil.sendHttpPost('https://postman-echo.com/post', '{}');
+        HttpResponse response = HttpUtil.sendHttpPostForLine('https://postman-echo.com/post', '{}');
         System.assertEquals(200, response.getStatusCode());
         System.assertEquals('OK', response.getBody());
         Test.stopTest();
