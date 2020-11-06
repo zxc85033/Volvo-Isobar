@@ -19,6 +19,10 @@ global class SmtActivityCarViewApi {
                 existingLead.SalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
                 Database.upsert(existingLead);
             }
+        } else {
+            Lead__c newLead = new Lead__c();
+            newLead.SMTLeadId__c = requestBodyWrapper.SMTLeadID;
+            insert newLead;
         }
 
         List<ActivityCarView__c> existingObjectList = [SELECT id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
