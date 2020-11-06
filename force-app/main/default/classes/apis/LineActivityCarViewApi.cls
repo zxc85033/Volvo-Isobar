@@ -11,19 +11,24 @@ global class LineActivityCarViewApi {
 
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
         if (existingObjectList != null && existingObjectList.size() > 0) {
-            response.statusCode = 400;
-            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.ResponseErrorDuplicateLineActivityID);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorDuplicateLineActivityID);
             return;
         }
 
         List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];
         if (existingDealerList != null && existingDealerList.size() > 0) {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
+        } else {
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            return;
         }
         
         List<Member__c> existingMemberList = [SELECT Id FROM Member__c WHERE LineUID__c =: requestBodyWrapper.lineUID];
         if (existingMemberList != null && existingMemberList.size() > 0) {
             requestBodyObject.Member__c = existingMemberList.get(0).Id;
+        } else {
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            return;
         }
 
         if (requestBodyWrapper.chooseMethod == Constants.PicklistChooseSalesRepsManual) {

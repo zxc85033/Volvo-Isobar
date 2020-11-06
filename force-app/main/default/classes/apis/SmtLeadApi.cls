@@ -12,21 +12,24 @@ global class SmtLeadApi {
         List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.salesRepresentativeCode];
         if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
             requestBodyObject.SalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+        } else {
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            return;
         }
         List<SalesRepresentative__c> existingExSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.exSalesRepresentativeCode];
         if (existingExSalesRepresentativeList != null && existingExSalesRepresentativeList.size() > 0) {
             requestBodyObject.ExSalesRepresentative__c = existingExSalesRepresentativeList.get(0).Id;
+        } else {
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            return;
         }
 
         List<Lead__c> existingObjectList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
-            MessageResponseWrapper messageResponseWrapper = new MessageResponseWrapper();
-            messageResponseWrapper.httpCode = 400;
-            messageResponseWrapper.message = Constants.ResponseErrorNotExisting;
-            response.statusCode = 400;
-            response.responseBody = ApiResponseUtil.buildBlobFromString(JSON.serialize(messageResponseWrapper));
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
             return;
         }
+        
         Lead__c existingObject = existingObjectList.get(0);
         requestBodyObject.Id = existingObject.Id;
         requestBodyObject = (Lead__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(requestBodyObject, existingObject);
