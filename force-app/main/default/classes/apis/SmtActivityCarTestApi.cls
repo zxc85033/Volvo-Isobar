@@ -21,7 +21,7 @@ global class SmtActivityCarTestApi {
             }
         } else {
             Lead__c newLead = new Lead__c();
-            newLead.SMTLeadId__c = SMTLeadID;
+            newLead.SMTLeadId__c = requestBodyWrapper.SMTLeadID;
             insert newLead;
         }
 
