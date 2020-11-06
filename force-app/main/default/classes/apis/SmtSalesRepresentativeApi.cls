@@ -12,6 +12,9 @@ global class SmtSalesRepresentativeApi {
         List<Dealer__c> existingDealerList = [SELECT Id FROM Dealer__c WHERE DealerCode__c =: requestBodyWrapper.dealerCode];
         if (existingDealerList != null && existingDealerList.size() > 0) {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
+        } else {
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            return;
         }
 
         List<SalesRepresentative__c> existingObjectList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.salesRepresentativeCode];
