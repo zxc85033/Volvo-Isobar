@@ -9,7 +9,7 @@ global class SmtActivityCarViewApi {
         SmtActivityCarViewWrapper requestBodyWrapper = SmtActivityCarViewWrapper.parseJson(request.requestBody.toString());
         ActivityCarView__c requestBodyObject = (ActivityCarView__c) requestBodyWrapper.ToSObject();
 
-        List<ActivityCarView__c> existingObjectList = [SELECT id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
+        List<ActivityCarView__c> existingObjectList = [SELECT id, Member__c FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
             response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
             return;
