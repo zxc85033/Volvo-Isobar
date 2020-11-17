@@ -33,9 +33,11 @@ global class LineActivityCarViewApi {
 
         if (requestBodyWrapper.chooseMethod == Constants.PicklistChooseSalesRepsManual) {
             List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
-            if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
-                requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+            if (existingSalesRepresentativeList.isEmpty()) {
+                response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+                return;
             }
+            requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
         }
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
