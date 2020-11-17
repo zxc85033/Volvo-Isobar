@@ -35,6 +35,9 @@ global class LineActivityCarViewApi {
             List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
             if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
                 requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
+            } else {
+                response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+                return;
             }
         }
         
