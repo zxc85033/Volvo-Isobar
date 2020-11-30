@@ -11,7 +11,7 @@ global class LineActivityCarViewApi {
 
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
         if (existingObjectList != null && existingObjectList.size() > 0) {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorDuplicateLineActivityID);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_DUPLICATE_LINE_ACTIVITY_ID);
             return;
         }
 
@@ -19,7 +19,7 @@ global class LineActivityCarViewApi {
         if (existingDealerList != null && existingDealerList.size() > 0) {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
         } else {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
         
@@ -27,14 +27,14 @@ global class LineActivityCarViewApi {
         if (existingMemberList != null && existingMemberList.size() > 0) {
             requestBodyObject.Member__c = existingMemberList.get(0).Id;
         } else {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
 
-        if (requestBodyWrapper.chooseMethod == Constants.PicklistChooseSalesRepsManual) {
+        if (requestBodyWrapper.chooseMethod == Constants.PICKLIST_CHOOSE_SALES_REPS_MANUAL) {
             List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.chooseSalesRepresentativeCode];
             if (existingSalesRepresentativeList.isEmpty()) {
-                response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+                response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
                 return;
             }
             requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
@@ -55,7 +55,7 @@ global class LineActivityCarViewApi {
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
             response.statusCode = 400;
-            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.ResponseErrorNotExisting);
+            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
         

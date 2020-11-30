@@ -14,7 +14,7 @@ public with sharing class ApiResponseUtil {
     }
 
     public static RestResponse buildRestResponseDependingDatabaseResponse(RestResponse response, Database.UpsertResult dbResult) {
-        response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_FAIL, Constants.ResponseErrorCannotInsertOrUpdate, 400);
+        response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_FAIL, Constants.RESPONSE_ERROR_CANNOT_INSERT_OR_UPDATE, 400);
         if (dbResult.isSuccess()) {
             response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_SUCCEEDED, null, 200);
         }

@@ -3,7 +3,7 @@ public with sharing class DealerDataLoader {
     public static void loadData() {
         Dealer__c data = new Dealer__c();
 
-        data.Area__c = Constants.PicklistDealerAreaNorth;
+        data.Area__c = Constants.PICKLIST_DEALER_AREA_NORTH;
         data.PhotoURL__c = 'https://images.google.com';
         data.Address__c = 'Taipei';
         data.ServiceHours__c = 'XXX';

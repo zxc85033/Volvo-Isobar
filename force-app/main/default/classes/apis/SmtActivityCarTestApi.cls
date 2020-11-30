@@ -11,14 +11,14 @@ global class SmtActivityCarTestApi {
 
         List<ActivityCarTest__c> existingObjectList = [SELECT Id, Member__c FROM ActivityCarTest__c WHERE LineActivityCarTestID__c =: requestBodyWrapper.lineActivityCarTestID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
 
         List<Lead__c> existingLeadList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
         List<SalesRepresentative__c> existingSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.salesRepresentativeCode];
         if (existingSalesRepresentativeList == null || existingSalesRepresentativeList.isEmpty()) {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
 

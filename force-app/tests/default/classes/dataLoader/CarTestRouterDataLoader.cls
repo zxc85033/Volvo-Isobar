@@ -4,7 +4,7 @@ public with sharing class CarTestRouterDataLoader {
         CarTestRoute__c data = new CarTestRoute__c();
 
         data.GoogleMapLink__c = 'https://maps.google.com/';
-        data.CarTestRouteType__c = Constants.PicklistCarTestRouteTypeUrban;
+        data.CarTestRouteType__c = Constants.PICKLIST_CAR_TEST_ROUTE_TYPE_URBAN;
         data.TestDriveExperienceProject__c = 'OK';
         data.DrivingDistance__c = '100';
         data.RouteDescription__c = 'Dangerous';

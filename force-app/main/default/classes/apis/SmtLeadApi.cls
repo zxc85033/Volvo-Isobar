@@ -13,20 +13,20 @@ global class SmtLeadApi {
         if (existingSalesRepresentativeList != null && existingSalesRepresentativeList.size() > 0) {
             requestBodyObject.SalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
         } else {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
         List<SalesRepresentative__c> existingExSalesRepresentativeList = [SELECT Id FROM SalesRepresentative__c WHERE SalesRepresentativeCode__c =: requestBodyWrapper.exSalesRepresentativeCode];
         if (existingExSalesRepresentativeList != null && existingExSalesRepresentativeList.size() > 0) {
             requestBodyObject.ExSalesRepresentative__c = existingExSalesRepresentativeList.get(0).Id;
         } else {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
 
         List<Lead__c> existingObjectList = [SELECT Id FROM Lead__c WHERE SMTLeadId__c =: requestBodyWrapper.SMTLeadID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
         
