@@ -24,7 +24,6 @@ public with sharing class ApiResponseUtil {
 
     public static RestResponse buildErrorResponse(RestResponse response, String errorMessage) {
         response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_FAIL, errorMessage, 400);
-        response.statusCode = 400;
         return response;
     }
 }
