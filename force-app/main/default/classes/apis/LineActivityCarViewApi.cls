@@ -54,8 +54,7 @@ global class LineActivityCarViewApi {
 
         List<ActivityCarView__c> existingObjectList = [SELECT Id FROM ActivityCarView__c WHERE LineActivityCarViewID__c =: requestBodyWrapper.lineActivityCarViewID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
-            response.statusCode = 400;
-            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.RESPONSE_ERROR_NOT_EXISTING);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
         

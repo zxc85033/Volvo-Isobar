@@ -59,8 +59,7 @@ global class LineActivityCarTestApi {
         
         List<ActivityCarTest__c> existingObjectList = [SELECT id FROM ActivityCarTest__c WHERE LineActivityCarTestID__c =: requestBodyWrapper.lineActivityCarTestID];
         if (existingObjectList == null || existingObjectList.isEmpty()) {
-            response.statusCode = 400;
-            response.responseBody = ApiResponseUtil.buildBlobFromString(Constants.RESPONSE_ERROR_NOT_EXISTING);
+            response = ApiResponseUtil.buildErrorResponse(response, Constants.RESPONSE_ERROR_NOT_EXISTING);
             return;
         }
 
