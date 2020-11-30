@@ -5,28 +5,26 @@ public with sharing class ApiResponseUtil {
         return responseAsBlob;
     }
 
+    public static RestResponse buildRestResponse(RestResponse response, String status, String message, Integer httpCode) {
+        MessageResponseWrapper messageResponseWrapper = new MessageResponseWrapper(status, message);
+        response.statusCode = httpCode;
+        response.responseBody = ApiResponseUtil.buildBlobFromString(JSON.serialize(messageResponseWrapper));
+        
+        return response;
+    }
+
     public static RestResponse buildRestResponseDependingDatabaseResponse(RestResponse response, Database.UpsertResult dbResult) {
-        response.statusCode = 400;
-        Blob resAsBlob = ApiResponseUtil.buildBlobFromString(Constants.ResponseErrorCannotInsertOrUpdate);
-        
+        response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_FAIL, Constants.ResponseErrorCannotInsertOrUpdate, 400);
         if (dbResult.isSuccess()) {
-            response.statusCode = 200;
-            resAsBlob = ApiResponseUtil.buildBlobFromString(Constants.ResponseSuccessInsertOrUpdate);
+            response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_SUCCEEDED, null, 200);
         }
-        
-        response.responseBody = resAsBlob;
 
         return response;
     }
 
     public static RestResponse buildErrorResponse(RestResponse response, String errorMessage) {
-        
-        MessageResponseWrapper messageResponseWrapper = new MessageResponseWrapper();
-        messageResponseWrapper.httpCode = 400;
-        messageResponseWrapper.message = errorMessage;
+        response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_FAIL, errorMessage, 400);
         response.statusCode = 400;
-        response.responseBody = ApiResponseUtil.buildBlobFromString(JSON.serialize(messageResponseWrapper));
-        
         return response;
     }
 }

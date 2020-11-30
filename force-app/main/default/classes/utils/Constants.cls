@@ -33,4 +33,7 @@ public with sharing class Constants {
 
     public final static String ResponseErrorCannotInsertOrUpdate = 'Error while inserting or updating the sales representative.';
     public final static String ResponseSuccessInsertOrUpdate = 'The object has been insert or updated with success.';
+
+    public final static String REST_RESPONSE_FAIL = 'Failed';
+    public final static String REST_RESPONSE_SUCCEEDED = 'Succeeded';
 }

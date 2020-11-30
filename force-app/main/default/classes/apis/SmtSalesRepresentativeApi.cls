@@ -13,7 +13,7 @@ global class SmtSalesRepresentativeApi {
         if (existingDealerList != null && existingDealerList.size() > 0) {
             requestBodyObject.Dealer__c = existingDealerList.get(0).Id;
         } else {
-            response = ApiResponseUtil.buildErrorResponse(response, Constants.ResponseErrorNotExisting);
+            response = ApiResponseUtil.buildRestResponse(response, Constants.REST_RESPONSE_FAIL, Constants.ResponseErrorNotExisting, 400);
             return;
         }
 
