@@ -1,4 +1,4 @@
-global with sharing class PromotionWrapper {
+global class PromotionWrapper {
     public String PromotionID {get; set;}
     public String PromotionYear {get; set;}
     public String PromotionMonth {get; set;}

@@ -8,6 +8,8 @@ public with sharing class HttpUtil {
     
         HttpResponse response = http.send(request);
 
+        ApiLogger.log(request, response);
+
         return response;
     }
 
@@ -29,6 +31,8 @@ public with sharing class HttpUtil {
         System.debug('response code:' + response.getStatusCode());
         System.debug('response body:' + response.getBody());
 
+        ApiLogger.log(request, response);
+
         return response;
     }
 
@@ -48,6 +52,8 @@ public with sharing class HttpUtil {
         System.debug('body:' + stringBodyAsJson);
     
         HttpResponse response = http.send(request);
+
+        ApiLogger.log(request, response);
 
         System.debug('response code:' + response.getStatusCode());
         System.debug('response body:' + response.getBody());
