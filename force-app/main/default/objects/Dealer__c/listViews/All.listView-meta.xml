@@ -7,6 +7,10 @@
     <columns>DealerSystemName__c</columns>
     <columns>Area__c</columns>
     <columns>City__c</columns>
+    <columns>ServiceHours__c</columns>
+    <columns>Address__c</columns>
+    <columns>Telephone__c</columns>
+    <columns>PhotoURL__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

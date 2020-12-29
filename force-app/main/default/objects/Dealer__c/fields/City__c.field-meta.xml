@@ -122,10 +122,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>北</controllingFieldValue>
-            <valueName>宜蘭縣</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>北</controllingFieldValue>
             <valueName>桃園市</valueName>
         </valueSettings>
         <valueSettings>
@@ -175,6 +171,10 @@
         <valueSettings>
             <controllingFieldValue>南</controllingFieldValue>
             <valueName>屏東縣</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>東</controllingFieldValue>
+            <valueName>宜蘭縣</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>東</controllingFieldValue>

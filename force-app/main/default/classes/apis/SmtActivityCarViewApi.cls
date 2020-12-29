@@ -40,6 +40,9 @@ global class SmtActivityCarViewApi {
         requestBodyObject = (ActivityCarView__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            LineCallout.lineFutureCallout(Constants.LINE_ENDPOINT_CAR_VIEW, request.requestBody.toString());
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
    }
     

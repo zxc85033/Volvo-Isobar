@@ -25,6 +25,9 @@ global class SmtSalesRepresentativeApi {
         }
 
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            LineCallout.lineFutureCallout(Constants.LINE_ENDPOINT_SALES, request.requestBody.toString());
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
    }
 }

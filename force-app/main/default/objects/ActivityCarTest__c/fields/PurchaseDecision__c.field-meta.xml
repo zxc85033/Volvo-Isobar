@@ -12,14 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>買車了好興奮</fullName>
+                <fullName>Y</fullName>
                 <default>false</default>
-                <label>買車了好興奮</label>
+                <label>Y</label>
             </value>
             <value>
-                <fullName>尚未決定購車</fullName>
+                <fullName>N</fullName>
                 <default>false</default>
-                <label>尚未決定購車</label>
+                <label>N</label>
             </value>
         </valueSetDefinition>
     </valueSet>

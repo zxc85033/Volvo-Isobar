@@ -8,10 +8,14 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
-        <controllingField>SafetySeatRequirement__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
+            <value>
+                <fullName>0張</fullName>
+                <default>false</default>
+                <label>0張</label>
+            </value>
             <value>
                 <fullName>1張</fullName>
                 <default>false</default>
@@ -23,13 +27,5 @@
                 <label>2張</label>
             </value>
         </valueSetDefinition>
-        <valueSettings>
-            <controllingFieldValue>需要</controllingFieldValue>
-            <valueName>1張</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>需要</controllingFieldValue>
-            <valueName>2張</valueName>
-        </valueSettings>
     </valueSet>
 </CustomField>

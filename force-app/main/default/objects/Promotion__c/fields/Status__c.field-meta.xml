@@ -12,14 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>啟用</fullName>
+                <fullName>Y</fullName>
                 <default>false</default>
-                <label>啟用</label>
+                <label>Y</label>
             </value>
             <value>
-                <fullName>停用</fullName>
+                <fullName>N</fullName>
                 <default>false</default>
-                <label>停用</label>
+                <label>N</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -10,6 +10,7 @@ global with sharing class SalesRepresentativeWrapper extends DtoBase {
     public String selfRecommendedContent {get; set;}
     public String workingStatus {get; set;}
     public String QRCodeLink {get; set;}
+    public String Email {get; set;}
 
     global override String getSObjectName() {
 		  return 'SalesRepresentative__c';

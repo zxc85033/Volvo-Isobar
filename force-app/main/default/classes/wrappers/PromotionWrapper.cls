@@ -5,6 +5,7 @@ global with sharing class PromotionWrapper {
     public String CarSeries {get; set;}
     public String CarModel {get; set;}
     public String CarStyle {get; set;}
+    public String CarName {get; set;}
     public String YearType {get; set;}
     public String SuggestedPrice {get; set;}
     public String PromotionContent {get; set;}
@@ -19,9 +20,10 @@ global with sharing class PromotionWrapper {
         this.CarSeries = promotionObject.CarSeries__c;
         this.CarModel = promotionObject.CarModel__c;
         this.CarStyle = promotionObject.CarStyle__c;
+        this.CarName = promotionObject.CarName__c;
 
         this.YearType = promotionObject.YearType__c;
-        this.SuggestedPrice = String.valueOf(promotionObject.SuggestedPrice__c);
+        this.SuggestedPrice = promotionObject.SuggestedPrice__c;
         this.PromotionContent = promotionObject.PromotionContent__c;
         
         this.Status = promotionObject.Status__c;

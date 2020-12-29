@@ -22,14 +22,14 @@
                 <label>已確認</label>
             </value>
             <value>
+                <fullName>已服務</fullName>
+                <default>false</default>
+                <label>已服務</label>
+            </value>
+            <value>
                 <fullName>已取消</fullName>
                 <default>false</default>
                 <label>已取消</label>
-            </value>
-            <value>
-                <fullName>已完成</fullName>
-                <default>false</default>
-                <label>已完成</label>
             </value>
         </valueSetDefinition>
     </valueSet>

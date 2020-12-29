@@ -5,6 +5,13 @@
     <columns>Status__c</columns>
     <columns>PromotionYear__c</columns>
     <columns>PromotionMonth__c</columns>
+    <columns>CarName__c</columns>
+    <columns>YearType__c</columns>
+    <columns>CarSeries__c</columns>
+    <columns>CarModel__c</columns>
+    <columns>CarStyle__c</columns>
+    <columns>PowerType__c</columns>
+    <columns>SuggestedPrice__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

@@ -12,14 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>需要</fullName>
+                <fullName>Y</fullName>
                 <default>false</default>
-                <label>需要</label>
+                <label>Y</label>
             </value>
             <value>
-                <fullName>不需要</fullName>
+                <fullName>N</fullName>
                 <default>false</default>
-                <label>不需要</label>
+                <label>N</label>
             </value>
         </valueSetDefinition>
     </valueSet>

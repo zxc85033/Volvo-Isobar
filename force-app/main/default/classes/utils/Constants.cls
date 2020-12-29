@@ -23,10 +23,18 @@ public with sharing class Constants {
 
     public final static String LINE_HOST = 'https://cloudservice.azure-api.net/volvo/api/test/';
     public final static String LINE_ENDPOINT_PROMOTION = 'promotion';
-    public final static String LINE_ENDPOINT_CAR_TEST_ROUTE = 'carTestRoute';
-    public final static String LINE_ENDPOINT_DEALER = 'dealer';
+    public final static String LINE_ENDPOINT_CAR_VIEW = 'CarView';
+    public final static String LINE_ENDPOINT_CAR_TEST_ROUTE = 'CarTestRoute';
+    public final static String LINE_ENDPOINT_CAR_TEST = 'CarTest';
+    public final static String LINE_ENDPOINT_DEALER = 'Dealer';
+    public final static String LINE_ENDPOINT_SMT_LEAD = 'SMTLead';
+    public final static String LINE_ENDPOINT_SALES = 'Sales';
+    public final static String LINE_ENDPOINT_MEMBER = 'Member';
 
-    public final static String SMT_HOST = 'smthost';
+    public final static String SMT_HOST = 'http://smt.genesys-tech.com:777/smt/smt/';
+    public final static String SMT_ENDPOINT_TOKEN = 'token/gettoken';
+    public final static String SMT_ACCESS_TOKEN_BODY = '{"userid":"sftest","password":"e8302e6d972939401b7b62784b67b4fd"}';
+    public final static String SMT_ENDPOINT_INSERT_MEMBER = 'LINE4i/InsertMember';
     
     public final static String REST_RESPONSE_FAIL = 'Failed';
     public final static String REST_RESPONSE_SUCCEEDED = 'Succeeded';

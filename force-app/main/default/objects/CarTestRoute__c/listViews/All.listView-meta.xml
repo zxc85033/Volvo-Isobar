@@ -3,7 +3,11 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>Dealer__c</columns>
+    <columns>DrivingTime__c</columns>
+    <columns>DrivingDistance__c</columns>
     <columns>CarTestRouteType__c</columns>
+    <columns>TestDriveExperienceProject__c</columns>
+    <columns>RouteDescription__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

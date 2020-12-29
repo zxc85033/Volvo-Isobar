@@ -31,4 +31,45 @@ public with sharing class HttpUtil {
 
         return response;
     }
+
+    public static HttpResponse sendHttpPostForSmt(String url, String stringBodyAsJson) {
+        String accessToken = SMTCallout.getAccessToken();
+        
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(url);
+        request.setMethod('POST');
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+        request.setHeader('Authorization', 'Bearer ' + accessToken);
+        request.setBody(stringBodyAsJson);
+
+        System.debug('---- Sending HTTP POST Request ----');
+        System.debug('URL:' + url);
+        System.debug('body:' + stringBodyAsJson);
+    
+        HttpResponse response = http.send(request);
+
+        System.debug('response code:' + response.getStatusCode());
+        System.debug('response body:' + response.getBody());
+
+        return response;
+    }
+
+    public static HttpResponse sendHttpPostForSmtAccessToken() {
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(Constants.SMT_HOST + Constants.SMT_ENDPOINT_TOKEN);
+        request.setMethod('POST');
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+        request.setBody(Constants.SMT_ACCESS_TOKEN_BODY);
+
+        System.debug('---- Sending HTTP POST Request ----');
+        
+        HttpResponse response = http.send(request);
+
+        System.debug('response code:' + response.getStatusCode());
+        System.debug('response body:' + response.getBody());
+
+        return response;
+    }
 }
