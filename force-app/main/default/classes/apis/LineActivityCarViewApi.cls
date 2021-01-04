@@ -41,7 +41,7 @@ global class LineActivityCarViewApi {
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         if (dbResult.isSuccess()) {
             String jsonBodyAsString = JSON.serialize(new LineToSmtCarViewWrapper(requestBodyWrapper));
-            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_INSERT_VIEW_CAR, request.requestBody.toString());
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_INSERT_VIEW_CAR, jsonBodyAsString);
         }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
@@ -67,7 +67,7 @@ global class LineActivityCarViewApi {
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         if (dbResult.isSuccess()) {
             String jsonBodyAsString = JSON.serialize(new LineToSmtCarViewUpdateWrapper(requestBodyWrapper));
-            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_UPDATE_VIEW_CAR, request.requestBody.toString());
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_UPDATE_VIEW_CAR, jsonBodyAsString);
         }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
