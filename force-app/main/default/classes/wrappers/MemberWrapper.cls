@@ -1,28 +1,21 @@
-global with sharing class MemberWrapper extends DtoBase {
+public class MemberWrapper {
     public String lineUID {get; set;}
     public String name {get; set;}
     public String gender {get; set;}
     public String cellPhone {get; set;}
     public String email {get; set;}
     public String birthday {get; set;}
+    public String IsAgree {get; set;}
+    public String IsPush {get; set;}
 
-    global override String getSObjectName() {
-        return 'Member__c';
-    }
-
-    global override Map<String, Object> getSObjectMap() {
-        return new Map<String, Object> {
-            'LineUID__c' => this.lineUID,
-            'Name' => this.name,
-            'Gender__c' => this.gender,
-            'CellPhone__c' => this.cellPhone,
-            'Email__c' => this.email,
-            'Birthday__c' => Date.valueOf(this.birthday)
-        };
-    }
-
-    global static MemberWrapper parseJson(String jsonString) {
-        return (MemberWrapper) System.JSON.deserialize(jsonString, MemberWrapper.class);
+    public MemberWrapper(Member__c givenSObject) {
+        this.lineUID = givenSObject.lineUID__c;
+        this.name = givenSObject.Name;
+        this.gender = givenSObject.gender__c;
+        this.cellPhone = givenSObject.cellPhone__c;
+        this.email = givenSObject.email__c;
+        this.birthday = String.valueOf(givenSObject.birthday__c);
+        this.IsAgree = String.valueOf(givenSObject.MemberAgreement__c);
+        this.IsPush = String.valueOf(givenSObject.LinePushAgreement__c);
     }
 }
-

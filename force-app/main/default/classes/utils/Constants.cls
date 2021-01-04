@@ -31,7 +31,7 @@ public with sharing class Constants {
     public final static String LINE_ENDPOINT_SALES = 'Sales';
     public final static String LINE_ENDPOINT_MEMBER = 'Member';
     public final static String LINE_ENDPOINT_BUY_CALCULATOR = 'BuyCalculator';
-
+    
     public final static String SMT_HOST = 'http://smt.genesys-tech.com:777/smt/smt/';
     public final static String SMT_ENDPOINT_TOKEN = 'token/gettoken';
     public final static String SMT_ACCESS_TOKEN_BODY = '{"userid":"sftest","password":"e8302e6d972939401b7b62784b67b4fd"}';

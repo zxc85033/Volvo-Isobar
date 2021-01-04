@@ -6,7 +6,7 @@ global class LineMemberApi {
         RestRequest request = RestContext.request;
         RestResponse response = Restcontext.response;
 
-        MemberWrapper requestBodyWrapper = MemberWrapper.parseJson(request.requestBody.toString());
+        LineMemberWrapper requestBodyWrapper = LineMemberWrapper.parseJson(request.requestBody.toString());
         Member__c requestBodyObject = (Member__c) requestBodyWrapper.ToSObject();
         
         List<Member__c> existingObjectList = [SELECT Id FROM Member__c WHERE LineUID__c =: requestBodyWrapper.lineUID];
