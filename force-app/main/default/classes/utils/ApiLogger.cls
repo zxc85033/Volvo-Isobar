@@ -3,10 +3,7 @@ public class ApiLogger {
     public static void log(HttpRequest request, HttpResponse response) {
         APILog__c apiLog = new APILog__c();
         apiLog.RequestBody__c = request.getBody();
-        Map<String, Object> mappedJsonResponseBody = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-        if (mappedJsonResponseBody != null) {
-            apiLog.ResponseBody__c = JSON.serialize(mappedJsonResponseBody.get('message'));
-        }
+        apiLog.ResponseBody__c = response.getBody();
         apiLog.RequestMethod__c = request.getMethod();
         apiLog.RequestTime__c = Datetime.now();
         apiLog.RequestURL__c = request.getEndpoint();
