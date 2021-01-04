@@ -39,6 +39,10 @@ global class LineActivityCarViewApi {
         requestBodyObject.ChooseSalesRepresentative__c = existingSalesRepresentativeList.get(0).Id;
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            String jsonBodyAsString = JSON.serialize(new LineToSmtCarViewWrapper(requestBodyWrapper));
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_INSERT_VIEW_CAR, request.requestBody.toString());
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
 
@@ -61,6 +65,10 @@ global class LineActivityCarViewApi {
         requestBodyObject = (ActivityCarView__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);        
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            String jsonBodyAsString = JSON.serialize(new LineToSmtCarViewUpdateWrapper(requestBodyWrapper));
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_UPDATE_VIEW_CAR, request.requestBody.toString());
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
 }

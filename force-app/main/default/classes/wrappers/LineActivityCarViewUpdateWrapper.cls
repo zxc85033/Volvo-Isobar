@@ -1,7 +1,7 @@
 global with sharing class LineActivityCarViewUpdateWrapper extends DtoBase {
     public String lineActivityCarViewID {get; set;}
 	public String status {get; set;}
-	public String satisfaction {get; set;}
+	public Integer satisfaction {get; set;}
    
     global override String getSObjectName() {
         return 'ActivityCarView__c';

@@ -35,7 +35,12 @@ public with sharing class Constants {
     public final static String SMT_HOST = 'http://smt.genesys-tech.com:777/smt/smt/';
     public final static String SMT_ENDPOINT_TOKEN = 'token/gettoken';
     public final static String SMT_ACCESS_TOKEN_BODY = '{"userid":"sftest","password":"e8302e6d972939401b7b62784b67b4fd"}';
-    public final static String SMT_ENDPOINT_INSERT_MEMBER = 'LINE4i/InsertMember';
+    public final static String SMT_ENDPOINT_LINE_MEMBER = 'LINE4i/LINEMember';
+    public final static String SMT_ENDPOINT_INSERT_VIEW_CAR = 'LINE4i/InsertViewCar';
+    public final static String SMT_ENDPOINT_UPDATE_VIEW_CAR = 'LINE4i/UpdateViewCar';
+    public final static String SMT_ENDPOINT_INSERT_TEST_CAR = 'LINE4i/InsertTestCar';
+    public final static String SMT_ENDPOINT_UPDATE_TEST_CAR = 'LINE4i/UpdateTestCar';
+    
     
     public final static String REST_RESPONSE_FAIL = 'Failed';
     public final static String REST_RESPONSE_SUCCEEDED = 'Succeeded';

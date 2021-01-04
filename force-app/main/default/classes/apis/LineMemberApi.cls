@@ -17,6 +17,10 @@ global class LineMemberApi {
         }
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            String jsonBodyAsString = JSON.serialize(request.requestBody.toString());
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_LINE_MEMBER, request.requestBody.toString());
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
 }
