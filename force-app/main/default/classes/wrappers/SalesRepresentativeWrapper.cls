@@ -3,14 +3,15 @@ global with sharing class SalesRepresentativeWrapper extends DtoBase {
     public String salesRepresentativeName {get; set;}
     public String dealerCode {get; set;}
     public String nickname {get; set;}
+    public String base64Photo {get; set;}
     public String cellPhone {get; set;}
     public String telephone {get; set;}
+    public String email {get; set;}
     public String lineID {get; set;}
     public String lineLink {get; set;}
     public String selfRecommendedContent {get; set;}
     public String workingStatus {get; set;}
     public String QRCodeLink {get; set;}
-    public String Email {get; set;}
 
     global override String getSObjectName() {
 		  return 'SalesRepresentative__c';
@@ -27,7 +28,8 @@ global with sharing class SalesRepresentativeWrapper extends DtoBase {
       'LineLink__c' => this.lineLink,
       'SelfRecommendedContent__c' => this.selfRecommendedContent,
       'WorkingStatus__c' => this.workingStatus,
-      'QRCodeLink__c' => this.QRCodeLink
+      'QRCodeLink__c' => this.QRCodeLink,
+      'base64Photo__c' => this.base64Photo
 		};
   }
   
