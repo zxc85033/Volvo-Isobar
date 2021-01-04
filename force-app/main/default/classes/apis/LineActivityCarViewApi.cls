@@ -40,7 +40,7 @@ global class LineActivityCarViewApi {
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         if (dbResult.isSuccess()) {
-            String jsonBodyAsString = JSON.serialize(new LineToSmtCarViewWrapper(requestBodyWrapper));
+            String jsonBodyAsString = JSON.serialize(new LineToSmtCarInsertWrapper(requestBodyWrapper));
             SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_INSERT_VIEW_CAR, jsonBodyAsString);
         }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);

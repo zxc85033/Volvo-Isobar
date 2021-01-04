@@ -1,4 +1,4 @@
-public class LineToSmtCarViewWrapper {
+public class LineToSmtCarInsertWrapper {
 
     public String lineUID {get; set;}
     public String lineActivityID {get; set;}
@@ -8,9 +8,19 @@ public class LineToSmtCarViewWrapper {
     public String powerType {get; set;}
     public String status {get; set;}
 
-    public LineToSmtCarViewWrapper(LineActivityCarViewInsertWrapper wrapper) {
+    public LineToSmtCarInsertWrapper(LineActivityCarViewInsertWrapper wrapper) {
         this.lineUID = wrapper.lineUID;
         this.lineActivityID = wrapper.lineActivityCarViewID;
+        this.dealerCode = wrapper.dealerCode;
+        this.user_id = wrapper.chooseSalesRepresentativeCode;
+        this.carModel = wrapper.carModel;
+        this.powerType = wrapper.powerType;
+        this.status = wrapper.status;
+    }
+
+    public LineToSmtCarInsertWrapper(LineActivityCarTestInsertWrapper wrapper) {
+        this.lineUID = wrapper.lineUID;
+        this.lineActivityID = wrapper.lineActivityCarTestID;
         this.dealerCode = wrapper.dealerCode;
         this.user_id = wrapper.chooseSalesRepresentativeCode;
         this.carModel = wrapper.carModel;

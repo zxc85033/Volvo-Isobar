@@ -40,6 +40,10 @@ global class LineActivityCarTestApi {
         
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            String jsonBodyAsString = JSON.serialize(new LineToSmtCarInsertWrapper(requestBodyWrapper));
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_INSERT_TEST_CAR, jsonBodyAsString);
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
 
@@ -67,6 +71,10 @@ global class LineActivityCarTestApi {
         requestBodyObject = (ActivityCarTest__c) SObjectUtil.updateFirstObjectWithNonNullValueOfSecondObject(existingObject, requestBodyObject);
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
+        if (dbResult.isSuccess()) {
+            String jsonBodyAsString = JSON.serialize(new LineToSmtCarTestUpdateWrapper(requestBodyWrapper));
+            SMTCallout.smtFutureCallout(Constants.SMT_ENDPOINT_UPDATE_TEST_CAR, jsonBodyAsString);
+        }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
     }
 }

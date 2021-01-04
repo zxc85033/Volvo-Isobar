@@ -6,7 +6,7 @@ global class LineActivityCarTestUpdateWrapper extends DtoBase {
     public String garageTestRequirement {get; set;}
     public String carTestRouteID {get; set;}
     public String purchaseDecision {get; set;}
-    public String satisfaction {get; set;}
+    public Integer satisfaction {get; set;}
 
     global override String getSObjectName() {
         return 'ActivityCarTest__c';
