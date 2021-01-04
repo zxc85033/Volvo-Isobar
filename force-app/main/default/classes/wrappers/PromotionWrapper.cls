@@ -4,9 +4,10 @@ global class PromotionWrapper {
     public String PromotionMonth {get; set;}
     public String CarSeries {get; set;}
     public String CarModel {get; set;}
+    public String PowerType {get; set;}
     public String CarStyle {get; set;}
-    public String CarName {get; set;}
     public String YearType {get; set;}
+    public String CarName {get; set;}
     public String SuggestedPrice {get; set;}
     public String PromotionContent {get; set;}
     public String Status {get; set;}
@@ -22,6 +23,7 @@ global class PromotionWrapper {
         this.CarStyle = promotionObject.CarStyle__c;
         this.CarName = promotionObject.CarName__c;
 
+        this.PowerType = promotionObject.PowerType__c;
         this.YearType = promotionObject.YearType__c;
         this.SuggestedPrice = promotionObject.SuggestedPrice__c;
         this.PromotionContent = promotionObject.PromotionContent__c;

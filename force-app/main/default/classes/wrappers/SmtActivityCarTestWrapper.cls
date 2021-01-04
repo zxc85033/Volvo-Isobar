@@ -7,7 +7,6 @@ global class SmtActivityCarTestWrapper extends DtoBase {
     public String powerType {get; set;}
     public String status {get; set;}
     public String activityCarTestDate {get; set;}
-    public String finalCarModel {get; set;}
     
     global override String getSObjectName() {
         return 'ActivityCarTest__c';
@@ -20,8 +19,7 @@ global class SmtActivityCarTestWrapper extends DtoBase {
             'CarModel__c' => this.carModel,
             'PowerType__c' => this.powerType,
             'Status__c' => this.status,
-            'ActivityCarTestDate__c' => this.activityCarTestDate != null? Datetime.valueOf(this.activityCarTestDate) : null,
-            'FinalCarModel__c' => this.finalCarModel    
+            'ActivityCarTestDate__c' => this.activityCarTestDate != null? Datetime.valueOf(this.activityCarTestDate) : null
         };
     }
 
