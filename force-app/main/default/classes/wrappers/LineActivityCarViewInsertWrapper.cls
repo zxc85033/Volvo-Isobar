@@ -4,9 +4,7 @@ global with sharing class LineActivityCarViewInsertWrapper extends DtoBase {
 	public String carModel {get; set;}
 	public String powerType {get; set;}
 	public String status {get; set;}
-	public String activityCarViewDate {get; set;}
-    public String lineUID {get; set;}
-    public String chooseMethod {get; set;}
+	public String lineUID {get; set;}
     public String chooseSalesRepresentativeCode {get; set;}
     
     global override String getSObjectName() {
@@ -18,9 +16,7 @@ global with sharing class LineActivityCarViewInsertWrapper extends DtoBase {
             'LineActivityCarViewID__c' => this.lineActivityCarViewID,
             'CarModel__c' => this.carModel,
             'PowerType__c' => this.powerType,
-            'Status__c' => this.status,
-            'ActivityCarViewDate__c' => this.activityCarViewDate!= null? Datetime.valueOf(this.activityCarViewDate): null,
-            'ChooseMethod__c' => this.chooseMethod
+            'Status__c' => this.status
         };
     }
 

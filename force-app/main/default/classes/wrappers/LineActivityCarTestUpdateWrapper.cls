@@ -2,7 +2,6 @@ global class LineActivityCarTestUpdateWrapper extends DtoBase {
     public String lineActivityCarTestID {get; set;}
     public String status {get; set;}
     public String companion {get; set;}
-    public String safetySeatRequirement {get; set;}
     public String safetySeatQuantity {get; set;}
     public String garageTestRequirement {get; set;}
     public String carTestRouteID {get; set;}
@@ -18,7 +17,6 @@ global class LineActivityCarTestUpdateWrapper extends DtoBase {
             'LineActivityCarTestID__c' => this.lineActivityCarTestID,
             'Status__c' => this.status,
             'Companion__c' => this.companion,
-            'SafetySeatRequirement__c' => this.safetySeatRequirement,
             'SafetySeatQuantity__c' => this.safetySeatQuantity,
             'GarageTestRequirement__c' => this.garageTestRequirement,
             'PurchaseDecision__c' => this.purchaseDecision,

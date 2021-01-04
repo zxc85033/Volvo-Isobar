@@ -4,9 +4,7 @@ global class LineActivityCarTestInsertWrapper extends DtoBase {
     public String carModel {get; set;}
     public String powerType {get; set;}
     public String status {get; set;}
-    public String activityCarTestDate {get; set;}
     public String lineUID {get; set;}
-    public String chooseMethod {get; set;}
     public String chooseSalesRepresentativeCode {get ;set;}
     
     global override String getSObjectName() {
@@ -18,9 +16,7 @@ global class LineActivityCarTestInsertWrapper extends DtoBase {
             'LineActivityCarTestID__c' => this.lineActivityCarTestID,
             'CarModel__c' => this.carModel,
             'PowerType__c' => this.powerType,
-            'Status__c' => this.status,
-            'ActivityCarTestDate__c' => this.activityCarTestDate != null? Datetime.valueOf(this.activityCarTestDate) : null,
-            'ChooseMethod__c' => this.chooseMethod
+            'Status__c' => this.status
         };
     }
 
