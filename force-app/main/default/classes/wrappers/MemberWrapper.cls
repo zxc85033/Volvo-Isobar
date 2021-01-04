@@ -15,7 +15,7 @@ public class MemberWrapper {
         this.cellPhone = givenSObject.cellPhone__c;
         this.email = givenSObject.email__c;
         this.birthday = String.valueOf(givenSObject.birthday__c);
-        this.IsAgree = givenSObject.MemberAgreement__c == true? 'Y' : 'N';
-        this.IsPush = givenSObject.LinePushAgreement__c == true? 'Y' : 'N';
+        this.IsAgree = givenSObject.MemberAgreement__c;
+        this.IsPush = givenSObject.LinePushAgreement__c;
     }
 }
