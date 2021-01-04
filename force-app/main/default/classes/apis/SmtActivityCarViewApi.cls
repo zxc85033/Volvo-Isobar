@@ -41,7 +41,8 @@ global class SmtActivityCarViewApi {
         
         Database.UpsertResult dbResult = Database.upsert(requestBodyObject);
         if (dbResult.isSuccess()) {
-            LineCallout.lineFutureCallout(Constants.LINE_ENDPOINT_CAR_VIEW, request.requestBody.toString());
+            String jsonBodyAsString = JSON.serialize(new SmtToLineCarViewWrapper(requestBodyWrapper));
+            LineCallout.lineFutureCallout(Constants.LINE_ENDPOINT_CAR_TEST, jsonBodyAsString);
         }
         ApiResponseUtil.buildRestResponseDependingDatabaseResponse(response, dbResult);
    }
